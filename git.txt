@@ -1,0 +1,86 @@
+git init
+
+git status
+
+git add 
+
+git commit -m 
+
+git log
+
+git log --pretty=oneline(形式好看)
+
+git reset --hard HEAD^(回退到上一个版本)
+
+git reset --hard 3fd99(回退到指定的版本）
+
+git reflog 查看命令历史 以便确定要回到未来的那个版本
+
+工作区 版本库{暂存区， master}
+
+git diff HEAD -- readme.txt 查看工作区和版本库最新版本的区别
+
+git checkout -- file 丢弃工作区的修改（其实是用版本库里的版本替换工作区的版本）
+
+git reset HEAD file 丢弃暂存区的修改
+
+git rm file 
+git commit -m "注释" 删除一个文件从版本库里
+
+git remote add origin git@github.com:FFGF/learngit.git 关联一个远程库
+
+git push -u origin master 第一次推送master分支所有内容
+
+git push origin master 推送修改
+
+git clone git@github.com:FFGF/gitskills.git 从远程库克隆一个在本地
+
+git branch 查看分支
+
+git branch <name> 创建分支
+
+git checkout <name> 切换分支
+
+git checkout -b <name> 创建+切换分支
+
+git merge <name> 合并分支
+
+git branch -d <name> 删除分支
+
+git log --graph --pretty=oneline --abbrev-commit 查看分支合并情况
+
+git merge --no-ff -m "merge with no-ff" dev 合并分支dev no Fast forward
+
+git stash 保存现场
+
+git stash list 查看保存的现场
+
+git stash apply stash@{0}恢复现场
+
+git stash drop stash@{0}删除存储的现场
+
+git stash pop 恢复现场并且删除现场
+
+git branch -D <name> 丢弃一个没有被合并的分支 强行删除
+
+创建一个远程分支
+可以现在本地使用 git checkout -b fgf 创建一个fgf的分支
+然后使用命令 git push origin fgf 此后在本地fgf分支可以
+直接使用git push 上传文件到远程分支上面
+
+删除一个远程分支 git push origin:fgf
+
+从远程分支同步本地分支可以使用
+git pull如果报错 使用 git branch --set-upstream-to=origin/fgf进行“绑定”
+
+查看远程分支情况可以使用
+git remote show origin
+
+git pull = git fetch + git merge
+
+删除远程分支文件
+
+先删除工作区文件 rm fgf.txt
+然后本地暂存区删除 git rm fgf.txt
+然后提交 git commit -m "删除fgf.txt"
+然后 git push 即可
